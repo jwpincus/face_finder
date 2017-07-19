@@ -10,6 +10,13 @@ $('#shutter-button').on('click', function(){
 
 $('div.button').on('click', '#submit-button', function(e) {
   e.preventDefault()
+  $.ajax({
+  type: "POST",
+  url: '/enrollments',
+  data: data,
+  success: success,
+  dataType: dataType
+})
 })
 
 $('div.button').on('click', '#reset-button', function(e) {

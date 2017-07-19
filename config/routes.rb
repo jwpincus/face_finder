@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/enroll' => 'enrollments#new'
 
+  resources :enrollments, only: [:create]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
