@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       login_actions(user)
     else
       flash[:danger] = ['Something went wrong! Please try again']
-      redirect_to "/login"
+      redirect_to login_path
     end
   end
 
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = ['Succesfully authenticated through webcam']
       flash.keep(:notice)
-      render js: "window.location = '#{root_path}'"
+      render js: "window.location = '#{dashboard_index_path}'"
     else
       flash[:danger] = ["It looks like we didn't recognize you, Try again, or use a password"]
       render js: "window.location = '#{login_path}'"
@@ -38,9 +38,9 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     flash[:success] = ["Welcome Back #{current_user.first_name}"]
     if user.enrolled?
-      redirect_to root_path
+      redirect_to dashboard_index_path
     else
-      redirect_to '/enroll'
+      redirect_to enroll_path
     end
   end
 
