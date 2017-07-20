@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
 
   $('#shutter-button').on('click', function(){
     take_snapshot()
@@ -10,10 +10,12 @@ $(document).ready(function(){
   $('div.button').on('click', '#submit-button', function(e) {
     e.preventDefault()
     let image = $('#my_camera').children('img').attr('src')
+    let url = $('#my_camera').attr('data-submit')
+    let email = $('#email-webcam').val()
     $.ajax({
       type: "POST",
-      url: '/enrollments',
-      data: {image: image},
+      url: url,
+      data: {image: image, email: email},
       success: function(data){
 
       }

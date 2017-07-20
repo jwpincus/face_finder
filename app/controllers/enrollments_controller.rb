@@ -1,5 +1,7 @@
 class EnrollmentsController < ApplicationController
-  protect_from_forgery :except => [:create]
+  protect_from_forgery except: [:create]
+  before_action :authorize, except: [:create]
+
   def new
     flash[:success] = ['You have to take a photo to complete the enrollment process']
   end
