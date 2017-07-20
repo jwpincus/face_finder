@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       <div class="panel-body">
         <h1>Login</h1>
 
@@ -13,5 +13,38 @@
         <% end %>
       </div>
     </div>
+
+    <div class="col-sm-6">
+      <div class="panel-body">
+        <h1>Login with webcam</h1>
+
+          <div class="panel panel-default" >
+            <div class="panel-heading">
+              Please take a photo with your face clearly visible and well lit
+            </div>
+            <div class="panel-body"  >
+              <div class="embed-responsive embed-responsive-16by9" id="my_camera" data-submit="/webcam/login">
+                Please allow the browser to access your webcam
+              </div>
+            </div>
+            <div class="panel-footer">
+              
+              <input type="text" name="email" id="email-webcam" value="Email" class="form-control" placeholder="Enter your email address here" />
+              <div class="button row">
+                <button class="btn btn-primary" id="shutter-button">Take Snapshot</button>
+
+
+            </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
   </div>
 </div>
+
+<script language="JavaScript">
+  Webcam.attach('#my_camera', function(){
+    $('#my_camera').empty()
+  })
+</script

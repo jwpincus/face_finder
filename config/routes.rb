@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/enroll' => 'enrollments#new'
+  post 'webcam/login' => 'sessions#create_webcam'
 
   resources :enrollments, only: [:create, :new]
 
