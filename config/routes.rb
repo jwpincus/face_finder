@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'webcam/login' => 'sessions#create_webcam'
 
   resources :enrollments, only: [:create, :new]
-
+  resources :dashboard, only: [:index]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
