@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  let image
 
 
   $('#shutter-button').on('click', function(){
@@ -9,17 +10,20 @@ $(document).ready(function(){
 
   $('div.button').on('click', '#submit-button', function(e) {
     e.preventDefault()
-    let image = $('#my_camera').children('img').attr('src')
     let url = $('#my_camera').attr('data-submit')
     let email = $('#email-webcam').val()
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: {image: image, email: email},
-      success: function(data){
+    if (email == '') {
+      alert("Please enter your e-mail address in the field below the photo")
+    } else {
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: {image: image, email: email},
+        success: function(data){
 
-      }
-    })
+        }
+      })
+    }
   })
 
   $('div.button').on('click', '#reset-button', function(e) {
@@ -28,8 +32,11 @@ $(document).ready(function(){
   })
 
   function take_snapshot() {
+    $('#my_camera').empty()
     Webcam.snap( function(data_uri) {
-      document.getElementById('my_camera').innerHTML = '<img src="'+data_uri+'"/>';
+      image = data_uri
+      $("#my_camera").css("overflow", `hidden`)
+      $("#my_camera").css("background-image", `url(${data_uri}`)
     } );
   }
 
@@ -38,7 +45,7 @@ $(document).ready(function(){
   }
 
   function addSubmit(){
-    $('div.container .button').append('<button class="btn btn-primary" id="submit-button">Submit Photo</button>')
-    $('div.container .button').append('<button class="btn btn-primary" id="reset-button">Retake photo</button>')
+    $('div.container .button').append('<button class="btn btn-success" id="submit-button">Submit Photo</button>')
+    $('div.container .button').append('<button class="btn btn-danger" id="reset-button">Retake photo</button>')
   }
 })

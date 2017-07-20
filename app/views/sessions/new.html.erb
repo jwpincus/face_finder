@@ -19,22 +19,21 @@
         <h1>Login with webcam</h1>
 
           <div class="panel panel-default" >
-            <div class="panel-heading">
-              Please take a photo with your face clearly visible and well lit
+            <div class="panel-heading button button-group">
+              <p><h4>Please take a photo with your face clearly visible and well lit</h4></p>
+
+                <button class="btn btn-primary" id="shutter-button">Take Photo</button>
+
             </div>
             <div class="panel-body"  >
-              <div class="embed-responsive embed-responsive-16by9" id="my_camera" data-submit="/webcam/login">
+              <div class="embed-responsive embed-responsive-4by3" id="my_camera" data-submit="/webcam/login">
                 Please allow the browser to access your webcam
               </div>
             </div>
             <div class="panel-footer">
 
               <input type="text" name="email" id="email-webcam" class="form-control" placeholder="Enter your email address here" />
-              <div class="button row">
-                <button class="btn btn-primary" id="shutter-button">Take Snapshot</button>
 
-
-            </div>
             </div>
           </div>
         </div>
