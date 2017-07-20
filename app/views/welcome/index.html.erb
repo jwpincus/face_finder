@@ -20,7 +20,7 @@
           Sign Up Now!
         </div>
         <div class="panel-body">
-          <h1>Signup!</h1>
+          <h1>Signup Here!</h1>
 
             <%= form_for :user, url: '/users' do |f| %>
 
@@ -32,6 +32,9 @@
               <%= f.submit "Sign up!", class: 'btn btn-primary' %>
 
             <% end %>
+        </div>
+        <div class="panel-footer">
+          If you already have an acount <%= link_to 'Login Here', login_path %>
         </div>
       </div>
     </div>
