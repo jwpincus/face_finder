@@ -3,4 +3,9 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :email, presence: true
   validates :email, uniqueness: true
+  has_many :enrollments
+
+  def enrolled?
+    enrollments.count >= 1 ? true : false
+  end
 end

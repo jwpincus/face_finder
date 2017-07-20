@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = ["Welcome Back #{current_user.first_name}"]
-      redirect_to "/"
+      if user.enrolled?
+        redirect_to root_path
+      else
+        redirect_to '/enroll'
+      end
     else
       flash[:danger] = ['Something went wrong! Please try again']
       redirect_to "/login"

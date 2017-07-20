@@ -1,0 +1,25 @@
+<!-- <div id="my_camera" style="width:320px; height:240px;"></div> -->
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default col-6" >
+      <div class="panel-heading">
+        Please take a photo with your face clearly visible and well lit
+      </div>
+      <div class="panel-body"  >
+        <div class="embed-responsive embed-responsive-16by9" id="my_camera">
+          Please allow the browser to access your webcam
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="button row">
+    <button class="btn btn-primary" id="shutter-button">Take Snapshot</button>
+
+  </div>
+
+</div>
+<script language="JavaScript">
+  Webcam.attach('#my_camera', function(){
+    $('#my_camera').empty()
+  })
+</script>
