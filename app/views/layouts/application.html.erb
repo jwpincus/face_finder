@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsChallenge</title>
+  <title>Re-Cognition</title>
   <%= javascript_include_tag 'application' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,7 @@
 <body>
 <div class="">
 
-  <nav class="navbar navbar-toggleable navbar-inverse" id='Navbar'>
+  <nav class="navbar navbar-toggleable navbar-inverse navbar-static-top" id='Navbar'>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
@@ -22,8 +22,7 @@
       </button>
       <a class="navbar-brand" href="#">Re-Cognition</a>
     </div>
-    <div class="collapse navbar-collapse" >
-      <div class="navbar-nav navbar-right">
+    <div class="collapse navbar-collapse navbar-right" >
         <ul class="nav navbar-nav">
           <% if !current_user %>
             <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -34,7 +33,6 @@
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
           <% end %>
         </ul>
-      </div>
     </div>
   </nav>
 </div>

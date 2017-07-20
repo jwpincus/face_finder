@@ -2,7 +2,7 @@ class KairosService
   @conn = Faraday.new('https://api.kairos.com')
 
   def self.enroll(enrollment)
-    @conn.post do |req|
+    response = @conn.post do |req|
       req.url '/enroll'
       req.headers['Content-type'] = 'application/json'
       req.headers['app_id'] = ENV['kairos_app_id']
@@ -10,6 +10,13 @@ class KairosService
       req.body = "{ \"image\": \"#{enrollment.image}\",
        \"subject_id\": \"#{enrollment.user_id}\",
         \"gallery_name\": \" devgallery \"}"
+    end
+    response = JSON.parse(response.body)
+    if !response['Errors']
+      enrollment.update_attributes(response: response)
+      enrollment.save
+    else
+      false
     end
   end
 

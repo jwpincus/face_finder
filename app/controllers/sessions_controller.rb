@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:email].downcase)
     if user && user.authenticate(params[:password])
       login_actions(user)
     else
@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def create_webcam
-    user = User.find_by_email(params[:email])
-    if user && KairosService.visual_auth(params[:image], user.id)
+    user = User.find_by_email(params[:email].downcase)
+    if user && user.visual_auth(params[:image], user.id)
       session[:user_id] = user.id
       flash[:success] = ['Succesfully authenticated through webcam']
       flash.keep(:notice)
