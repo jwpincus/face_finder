@@ -1,8 +1,7 @@
 class Enrollment < ApplicationRecord
   belongs_to :user
 
-  def send_to_kairos
-    response = KairosService.enroll(self)
-    self.update_attributes(response: response)
+  def enroll
+    KairosService.enroll(self)
   end
 end

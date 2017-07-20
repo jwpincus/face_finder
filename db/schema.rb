@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719220936) do
+ActiveRecord::Schema.define(version: 20170720202902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,17 +18,17 @@ ActiveRecord::Schema.define(version: 20170719220936) do
   create_table "enrollments", force: :cascade do |t|
     t.bigint "user_id"
     t.text "image"
-    t.string "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "response", default: {}, null: false
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
-    t.string "email", limit: 255
-    t.string "first_name", limit: 255
-    t.string "last_name", limit: 255
-    t.string "password_digest", limit: 255
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
