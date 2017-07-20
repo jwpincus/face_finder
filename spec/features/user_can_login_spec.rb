@@ -6,7 +6,7 @@ describe 'registered user can log in' do
     fill_in('email', with: user.email)
     fill_in('password', with: 'pass')
     click_on('Submit')
-    expect(page).to have_content('Welcome Back Jack')
+    expect(page).to have_content(' Jack')
   end
   scenario 'Fails with bad password' do
     user = User.create(first_name: "Jack", email: "1@1.com", password: "pass", password_confirmation: 'pass')

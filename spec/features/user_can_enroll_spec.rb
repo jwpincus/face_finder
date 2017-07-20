@@ -4,6 +4,7 @@ describe 'logged in or newly created user can enroll' do
   scenario 'already registered user redirected to enroll photo if no enrollments' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit '/'
     expect(page).to have_current_path('/enroll')
 
   end
