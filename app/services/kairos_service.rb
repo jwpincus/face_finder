@@ -9,7 +9,7 @@ class KairosService
       req.headers['app_key'] = ENV['kairos_key']
       req.body = "{ \"image\": \"#{enrollment.image}\",
        \"subject_id\": \"#{enrollment.user_id}\",
-        \"gallery_name\": \" devgallery \"}"
+        \"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
     end
     response = JSON.parse(response.body)
     if !response['Errors']
@@ -28,7 +28,7 @@ class KairosService
       req.headers['app_key'] = ENV['kairos_key']
       req.body = "{ \"image\": \"#{image}\",
        \"subject_id\": \"#{user_id}\",
-        \"gallery_name\": \" devgallery \"}"
+        \"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
     end
     if !JSON.parse(response.body)['Errors']
       true if  JSON.parse(response.body)['images'][0]['transaction']['confidence'] > ENV['confidence'].to_f
