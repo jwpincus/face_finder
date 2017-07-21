@@ -31,7 +31,7 @@ class KairosService
         \"gallery_name\": \" devgallery \"}"
     end
     if !JSON.parse(response.body)['Errors']
-      true if  JSON.parse(response.body)['images'][0]['transaction']['confidence'] > ENV['confidence']
+      true if  JSON.parse(response.body)['images'][0]['transaction']['confidence'] > ENV['confidence'].to_f
     else
       false
     end
