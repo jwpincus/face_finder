@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720202902) do
+ActiveRecord::Schema.define(version: 20170722052033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "app_owners", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "app_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_app_owners_on_app_id"
+    t.index ["user_id"], name: "index_app_owners_on_user_id"
+  end
+
+  create_table "app_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "app_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_app_users_on_app_id"
+    t.index ["user_id"], name: "index_app_users_on_user_id"
+  end
+
+  create_table "apps", force: :cascade do |t|
+    t.string "name"
+    t.float "min_confidence", default: 0.6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "enrollments", force: :cascade do |t|
     t.bigint "user_id"
@@ -33,5 +58,9 @@ ActiveRecord::Schema.define(version: 20170720202902) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "app_owners", "apps"
+  add_foreign_key "app_owners", "users"
+  add_foreign_key "app_users", "apps"
+  add_foreign_key "app_users", "users"
   add_foreign_key "enrollments", "users"
 end
