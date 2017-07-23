@@ -7,6 +7,7 @@ class AppsController < ApplicationController
     app = App.new(app_params)
     if app.save
       current_user.apps << app
+      app.authorized_users << current_user
       flash[:success] = ["#{app.name} App created"]
       redirect_to dashboard_index_path
     else
