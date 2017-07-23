@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
-  # add before_filter :authorize to any controller that you want the user to be authroized for
 
   def enrolled?
     if current_user && !current_user.enrolled?

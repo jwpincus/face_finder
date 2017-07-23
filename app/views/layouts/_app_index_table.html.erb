@@ -19,7 +19,7 @@
                 <td><%= app.id %></td>
                 <td><%= app.users_count %></td>
                 <td><%= (app.min_confidence * 100).round %></td>
-                <td><%= link_to 'Manage authorized users and settings', edit_app_path(app) %></td>
+                <td><%= link_to 'Manage authorized users and settings', app_path(app) %></td>
               </tr>
             <% end %>
           </tbody>

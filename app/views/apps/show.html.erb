@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 panel panel-success" id="users">
+      <div class="panel-heading">
+        Users authorized to use <%= @app.name %>
+      </div>
+      <div class="panel-body">
+
+        <table class="table table-striped">
+          <thead>
+            <th>User First Name</th>
+            <th>User email</th>
+            <th>User Image</th>
+            <th></th>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.first_name %></td>
+                  <td><%= user.email %></td>
+                  <td><img src="<%= user.enrollment_image  %>" style="width:90px ;"></td>
+                  <td><%= link_to 'Remove User Authorization', remove_user_path(app_id: @app.id, user_id: user.id), method: :delete %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </thead>
+        </table>
+        <p><%= form_tag add_user_path, method: :post do %>
+            <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'User Email' %>
+            <%= hidden_field_tag :app_id, @app.id %>
+            <%= submit_tag "Add User", class: 'btn btn-primary', style: 'margin-top:10px;' %>
+          <% end %></p>
+      </div>
+    </div>
+  </div>
+</div>

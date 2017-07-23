@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/enroll' => 'enrollments#new'
   post 'webcam/login' => 'sessions#create_webcam'
+  post '/add_user' => 'authorized_users#create'
+  delete '/remove_user' => 'authorized_users#delete'
 
   resources :enrollments, only: [:create, :new]
   resources :dashboard, only: [:index]
