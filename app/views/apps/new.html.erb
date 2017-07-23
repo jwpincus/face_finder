@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel-body">
+        <h1>Create a new App</h1>
+
+          <%= form_for @app do |f| %>
+
+            <%= f.text_field :name, class: 'form-control', placeholder: 'App Name' %>
+            <%= f.label :min_confidence, 'Minimum confidence: 70' %>
+            <%= f.range_field :min_confidence, :min=>0, :max=>100, :class=>"slide", value: 70, :id=>"min_confidence"%>
+            <p>The confidence field sets the ammount of certainty necessary for a positive identification. A higher number increases security, but may occasionally deny access to valid users. A lower number may occasionally allow access to users that aren't authorized. We recomend a setting of 70 for most apps. </p>
+            <%= f.submit "Add new App", class: 'btn btn-primary' %>
+
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

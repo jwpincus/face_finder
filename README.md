@@ -1,3 +1,4 @@
+
 # Facial Recognition User System and login
 This project is a fork of the basic facial recognition system I designed [here](https://github.com/jwpincus/facial-login-standalone)
 
@@ -14,3 +15,4 @@ This fork is exploring using facial data to authenticate IOT device users that a
 
 ## More Info
 Read the write-up [here](https://medium.com/@Jwpincus/i-made-a-thing-facial-recognition-e694bc1ac8c8)
+

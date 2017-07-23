@@ -1,16 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-10">
       <div class="panel panel-primary">
 
         <div class="panel-heading">
           Facial Recognition based login and authorization dashboard
         </div>
         <div class="panel-body">
-          <p><b>If you are here, its because you are succesfully logged in.</b></p>
-          <p>Keep an eye out here for exciting things to happen</p>
+          <p><b>From here you can:</b></p>
+          <ul>
+            <li> Manage your Apps and Devices authenticating through our service</li>
+            <li>See which apps and devices you are authorized on</li>
+            <li>See a log of details about your succesful authentications</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+  <%= render partial: 'layouts/app_index_table.html.erb' %>
 </div>

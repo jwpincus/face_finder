@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-10 panel panel-success">
+    <div class="panel-heading">
+      Apps and Devices that you own
+    </div>
+    <div class="panel-body">
+      <p><%= link_to 'Create New App', new_app_path %></p>
+      <table class="table table-striped">
+        <thead>
+          <th>App Name</th>
+          <th>App ID</th>
+          <th>Registered Users</th>
+          <th>Confidence Threshold</th>
+          <th></th>
+          <tbody>
+            <% @apps.each do |app| %>
+              <tr>
+                <td><%= app.name %></td>
+                <td><%= app.id %></td>
+                <td><%= app.users_count %></td>
+                <td><%= (app.min_confidence * 100).round %></td>
+                <td><%= link_to 'Manage authorized users and settings', edit_app_path(app) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :enrollments, only: [:create, :new]
   resources :dashboard, only: [:index]
+  resources :apps, only: [:new, :create, :show, :edit]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
