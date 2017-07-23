@@ -220,6 +220,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry-rails
+  rack-test
   rails (~> 5)
   rspec
   rspec-rails
