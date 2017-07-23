@@ -14,7 +14,9 @@ describe 'an api can', type: :api do
         "app_id" => "#{@app.id}",
         "image" => @test_image
       }
-      binding.pry
+      body = JSON.parse(response.body)
+      expect(response).to be_success
+      expect(response.body).to have_content('true')
     end
 
   end
