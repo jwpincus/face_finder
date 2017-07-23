@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
     KairosService.visual_auth(image, user_id)
   end
 
+  def enrollment_image
+    enrollments.count > 0 ? enrollments.first.image : "User has no reference image: Authentication not possible"
+  end
   private
 
   def downcase_email

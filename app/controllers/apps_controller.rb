@@ -15,6 +15,15 @@ class AppsController < ApplicationController
     end
   end
 
+  def show
+    @app = App.find(params[:id])
+    @users = @app.authorized_users
+    if !@app.owners.include?(current_user)
+      flash[:danger] = ['You are not authorized to manage this App']
+      redirect_to dashboard_index_path
+    end
+  end
+
   private
 
   def app_params
