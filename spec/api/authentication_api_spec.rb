@@ -33,16 +33,16 @@ describe 'an api can', type: :api do
     #   expect(body['error']).to eq('Unable to find a face that matched an authorized user')
     # end
 
-    # scenario 'GET /api/v1/authenticate rejects Donald Trump (or any stranger)' do
-    #   response = post '/api/v1/authenticate', {
-    #     "app_id" => "#{@app.id}",
-    #     "image" => @test_image.the_donald
-    #   }
-    #   body = JSON.parse(response.body)
-    #   expect(response.status).to eq(200)
-    #   expect(body['authenticated']).to eq(false)
-    #   expect(body['error']).to eq('Unable to find a face that matched an authorized user')
-    # end
+    scenario 'GET /api/v1/authenticate rejects Donald Trump (or any stranger)' do
+      response = post '/api/v1/authenticate', {
+        "app_id" => "#{@app.id}",
+        "image" => @test_image.the_donald
+      }
+      body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(body['authenticated']).to eq(false)
+      expect(body['error']).to eq('Unable to find a face that matched an authorized user')
+    end
 
   end
 end

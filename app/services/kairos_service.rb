@@ -46,8 +46,7 @@ class KairosService
       req.body = "{ \"image\": \"#{image}\",
         \"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
     end
-    if !JSON.parse(response.body)['Errors'] || !(response['images'].first['transaction']['status'] == 'failure')
-
+    if !JSON.parse(response.body)['Errors'] && !(JSON.parse(response.body)['images'].first['transaction']['status'] == 'failure')
       JSON.parse(response.body)
     else
       false

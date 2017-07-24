@@ -3,19 +3,24 @@ class Kairos
     app = App.find(app_id)
     response = KairosService.id_user(image, app.min_confidence)
     if response
-      user = User.find(response['images']['transaction']['subject_id'])
-      { authenticated: user_authorized(app, user), user: {
-        name: user.first_name, email: user.email
+      user = User.find(response['images'].first['transaction']['subject_id'])
+      authorized = user_authorized(app, user)
+      if authorized
+        { authenticated: authorized, user: {
+          name: user.first_name, email: user.email
         }}
+      else
+        no_match
+      end
     else
-      no_love
+      no_match
     end
 
   end
 
   private
 
-  def self.no_love
+  def self.no_match
     {authenticated: false, error: 'Unable to find a face that matched an authorized user'}
   end
 
