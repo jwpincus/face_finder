@@ -37,6 +37,22 @@ class KairosService
     end
   end
 
+  def self.id_user(image, threshold)
+    response = @conn.post do |req|
+      req.url '/recognize'
+      req.headers['Content-type'] = 'application/json'
+      req.headers['app_id'] = ENV['kairos_app_id']
+      req.headers['app_key'] = ENV['kairos_key']
+      req.body = "{ \"image\": \"#{image}\",
+        \"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
+    end
+    if !JSON.parse(response.body)['Errors'] && !(JSON.parse(response.body)['images'].first['transaction']['status'] == 'failure')
+      JSON.parse(response.body)
+    else
+      false
+    end
+  end
+
   def self.delist_all
     #this is a tool for devs to dump all enrollments at Kairos, use carefully
     @conn.post do |req|
@@ -44,7 +60,7 @@ class KairosService
       req.headers['Content-type'] = 'application/json'
       req.headers['app_id'] = ENV['kairos_app_id']
       req.headers['app_key'] = ENV['kairos_key']
-      req.body = "{\"gallery_name\": \" devgallery \"}"
+      req.body = "{\"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
     end
   end
 
