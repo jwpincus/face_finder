@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:create, :new]
   resources :dashboard, only: [:index]
   resources :apps, only: [:new, :create, :show, :edit]
+  namespace :api do
+    namespace :v1 do
+        resources :authenticate, controller: 'app_authentications'
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
