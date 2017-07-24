@@ -5,7 +5,7 @@ describe 'an api can', type: :api do
     ENV['kairos_gallery'] = 'test'
     @user = create(:user)
     @test_image = Test_image.new()
-    # @user.enrollments.new(image: @test_image).enroll
+    # @user.enrollments.new(image: @test_image).enroll --uncomment this the first time the test suite is run. keeping it commented after the enrollment is created will speed up the tests as this method is an external api call.
     @app = create(:app)
     @user.apps << @app
     @app.authorized_users << @user
