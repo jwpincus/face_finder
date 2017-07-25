@@ -29,6 +29,7 @@
             <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <% end %>
           <% if current_user %>
+            <li> <a href="<%= dashboard_index_path %>">DashBoard</a> </li>
             <li> <a href="">Welcome <%= current_user.first_name %></a> </li>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
           <% end %>
