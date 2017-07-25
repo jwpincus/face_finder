@@ -1,6 +1,6 @@
 class Kairos
-  def self.app_auth(app_id, image)
-    app = App.find(app_id)
+  def self.app_auth(app_key, image)
+    app = App.find_by(app_key: app_key)
     response = KairosService.id_user(image, app.min_confidence)
     if response
       user = User.find(response['images'].first['transaction']['subject_id'])

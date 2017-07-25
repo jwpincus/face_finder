@@ -13,7 +13,7 @@ describe 'an api can', type: :api do
   context 'authenticate a user via api' do
     scenario 'GET /api/v1/authenticate with good image' do
       response = post '/api/v1/authenticate', {
-        "app_id" => "#{@app.id}",
+        "app_key" => "#{@app.app_key}",
         "image" => @test_image.image
       }
       body = JSON.parse(response.body)
@@ -27,7 +27,7 @@ describe 'an api can', type: :api do
 
     scenario 'GET /api/v1/authenticate with no faces rejects' do
       response = post '/api/v1/authenticate', {
-        "app_id" => "#{@app.id}",
+        "app_key" => "#{@app.app_key}",
         "image" => @test_image.bad_image
       }
       body = JSON.parse(response.body)
@@ -38,7 +38,7 @@ describe 'an api can', type: :api do
 
     scenario 'GET /api/v1/authenticate rejects Donald Trump (or any stranger)' do
       response = post '/api/v1/authenticate', {
-        "app_id" => "#{@app.id}",
+        "app_key" => "#{@app.app_key}",
         "image" => @test_image.the_donald
       }
       body = JSON.parse(response.body)
@@ -46,6 +46,6 @@ describe 'an api can', type: :api do
       expect(body['authenticated']).to eq(false)
       expect(body['error']).to eq('Unable to find a face that matched an authorized user')
     end
-  
+
   end
 end

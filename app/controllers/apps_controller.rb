@@ -16,6 +16,14 @@ class AppsController < ApplicationController
     end
   end
 
+  def update
+    app = App.find(params[:id])
+    if app.update_attributes(app_params)
+      flash[:success] = ['App information updated']
+      redirect_to app_path(app)
+    end
+  end
+
   def show
     @app = App.find(params[:id])
     @users = @app.authorized_users
@@ -25,6 +33,11 @@ class AppsController < ApplicationController
     end
   end
 
+  def destroy
+    App.find(params[:id]).destroy
+    flash[:success] = ['App successfully deleted']
+    redirect_to dashboard_index_path
+  end
   private
 
   def app_params
