@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <div class="container">
   <div class="row">
     <div class="col-10 panel panel-success" id="users">
@@ -25,7 +26,7 @@
           </thead>
         </table>
         <p><%= form_tag add_user_path, method: :post do %>
-            <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'User Email' %>
+            <%= email_field_tag :add_user_email, nil, class: 'form-control', placeholder: 'User Email' %>
             <%= hidden_field_tag :app_id, @app.id %>
             <%= submit_tag "Add User", class: 'btn btn-primary', style: 'margin-top:10px;' %>
           <% end %></p>
@@ -33,3 +34,4 @@
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" charset="utf-8"></script>
