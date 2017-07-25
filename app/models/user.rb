@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :apps, through: :app_owners
   has_many :app_users
   has_many :authorizations, through: :app_users, source: :app
+  has_many :authentications
   before_save :downcase_email
 
   def enrolled?

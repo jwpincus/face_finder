@@ -40,4 +40,5 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'rack-test'
+  gem 'launchy'
 end
