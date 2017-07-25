@@ -24,10 +24,10 @@ class SessionsController < ApplicationController
     if user && user.visual_auth(params[:image], user.id)
       session[:user_id] = user.id
       flash[:success] = ['Succesfully authenticated through webcam']
-      flash.keep(:notice)
+      # flash.keep(:notice)
       render js: "window.location = '#{dashboard_index_path}'"
     else
-      flash[:danger] = ["It looks like we didn't recognize you, Try again, or use a password"]
+      flash[:danger] = ["It looks like we didn't recognize you, Try again, or login using a password at the bottom of the page"]
       render js: "window.location = '#{login_path}'"
     end
   end

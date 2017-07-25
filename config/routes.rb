@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :enrollments, only: [:create, :new]
   resources :dashboard, only: [:index]
-  resources :apps, only: [:new, :create, :show, :edit]
+  resources :apps, only: [:new, :create, :show, :update, :destroy]
   namespace :api do
     namespace :v1 do
         resources :authenticate, controller: 'app_authentications'

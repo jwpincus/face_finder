@@ -1,35 +1,64 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <div class="container">
   <div class="row">
-    <div class="col-10 panel panel-success" id="users">
-      <div class="panel-heading">
-        Users authorized to use <%= @app.name %>
-      </div>
-      <div class="panel-body">
+    <div class="col-md-10">
+      <div class="panel panel-success" id="users">
+        <div class="panel-heading">
+          Users authorized to use <%= @app.name %>
+        </div>
+        <div class="panel-body">
 
-        <table class="table table-striped">
-          <thead>
-            <th>User First Name</th>
-            <th>User email</th>
-            <th>User Image</th>
-            <th></th>
-            <tbody>
-              <% @users.each do |user| %>
+          <table class="table table-striped">
+            <thead>
+              <th>User First Name</th>
+              <th>User email</th>
+              <th>User Image</th>
+              <th></th>
+              <tbody>
+                <% @users.each do |user| %>
                 <tr>
                   <td><%= user.first_name %></td>
                   <td><%= user.email %></td>
                   <td><img src="<%= user.enrollment_image  %>" style="width:90px ;"></td>
                   <td><%= link_to 'Remove User Authorization', remove_user_path(app_id: @app.id, user_id: user.id), method: :delete %></td>
                 </tr>
-              <% end %>
-            </tbody>
-          </thead>
-        </table>
-        <p><%= form_tag add_user_path, method: :post do %>
+                <% end %>
+              </tbody>
+            </thead>
+          </table>
+          <p><%= form_tag add_user_path, method: :post do %>
             <%= email_field_tag :add_user_email, nil, class: 'form-control', placeholder: 'User Email' %>
             <%= hidden_field_tag :app_id, @app.id %>
             <%= submit_tag "Add User", class: 'btn btn-primary', style: 'margin-top:10px;' %>
-          <% end %></p>
+            <% end %></p>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-10">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          Settings for <%= @app.name %>
+        </div>
+        <div class="panel-body">
+          <%= form_for @app do |f| %>
+
+          <%= f.text_field :name, class: 'form-control', placeholder: @app.name %>
+          <%= f.label :min_confidence, "Minimum confidence: #{@app.min_confidence * 100}" %>
+          <%= f.range_field :min_confidence, :min=>0, :max=>100, :class=>"slide", value: (@app.min_confidence * 100), :id=>"min_confidence"%>
+          <p>The confidence field sets the ammount of certainty necessary for a positive identification. A higher number increases security, but may occasionally deny access to valid users. A lower number may occasionally allow access to users that aren't authorized. We recomend a setting of 70 for most apps. </p>
+          <%= f.submit "Update App", class: 'btn btn-primary' %>
+
+          <% end %>
+
+        </div>
+        <div class="panel-footer">
+          <h3>Delete cannot be undone</h3>
+          <%= link_to 'Delete App', app_path(@app), method: :delete %>
+        </div>
       </div>
     </div>
   </div>
