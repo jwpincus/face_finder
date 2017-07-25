@@ -3,6 +3,7 @@ class App < ApplicationRecord
   has_many :owners, through: :app_owners, source: :user
   has_many :app_users
   has_many :authorized_users, through: :app_users, source: :user
+  has_many :authentications
   before_save :decimalize_confidence
 
   def users_count

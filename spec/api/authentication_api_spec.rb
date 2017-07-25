@@ -20,6 +20,9 @@ describe 'an api can', type: :api do
       expect(response.status).to eq(200)
       expect(body['authenticated']).to eq(true)
       expect(body['user']['name']).to eq(@user.first_name)
+      authentication = Authentication.last
+      expect(authentication.user).to eq(@user)
+      expect(authentication.app).to eq(@app)
     end
 
     scenario 'GET /api/v1/authenticate with no faces rejects' do
@@ -43,6 +46,6 @@ describe 'an api can', type: :api do
       expect(body['authenticated']).to eq(false)
       expect(body['error']).to eq('Unable to find a face that matched an authorized user')
     end
-
+  
   end
 end

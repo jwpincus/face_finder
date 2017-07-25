@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-10 panel panel-success">
+    <div class="panel-heading">
+      Succesful Authentications on Your Account
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped" id="authentications-table">
+        <thead>
+          <th>App Name</th>
+          <th>Date</th>
+          <th>Image</th>
+          <tbody>
+            <% @authentications.each do |authentication| %>
+              <tr>
+                <td><%= authentication.app.name %></td>
+                <td><%= authentication.created_at %></td>
+                <td><img src="<%= authentication.image  %>" style="width:90px ;"></td>
+
+              </tr>
+            <% end %>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
