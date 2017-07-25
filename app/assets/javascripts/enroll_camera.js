@@ -10,6 +10,7 @@ $(document).ready(function(){
 
   $('div.button').on('click', '#submit-button', function(e) {
     e.preventDefault()
+    $("*").css("cursor", "progress")
     let url = $('#my_camera').attr('data-submit')
     let email = $('#email-webcam').val()
     if (email == '') {
