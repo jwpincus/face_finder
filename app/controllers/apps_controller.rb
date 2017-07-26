@@ -1,4 +1,5 @@
 class AppsController < ApplicationController
+  before_action :app_owner?, only: [:destroy, :update, :show]
   def new
     @app = App.new
   end
@@ -27,10 +28,7 @@ class AppsController < ApplicationController
   def show
     @app = App.find(params[:id])
     @users = @app.authorized_users
-    if !@app.owners.include?(current_user)
-      flash[:danger] = ['You are not authorized to manage this App']
-      redirect_to dashboard_index_path
-    end
+
   end
 
   def destroy
@@ -39,6 +37,13 @@ class AppsController < ApplicationController
     redirect_to dashboard_index_path
   end
   private
+
+  def app_owner?
+    if !App.find(params[:id]).owners.include?(current_user)
+      flash[:danger] = ['This resource is not available']
+      redirect_to dashboard_index_path
+    end
+  end
 
   def app_params
     params.require(:app).permit(:name, :min_confidence)

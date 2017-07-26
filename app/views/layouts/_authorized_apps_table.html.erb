@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-10 panel panel-success">
+    <div class="panel-heading">
+      Apps and Devices that you have been authorized to use
+    </div>
+    <div class="panel-body">
+
+      <table class="table table-striped" id="authorized-apps">
+        <thead>
+          <th>App Name</th>
+          <th>Registered Users</th>
+          <tbody>
+            <% current_user.authorizations.each do |app| %>
+              <tr>
+                <td><%= app.name %></td>
+                <td><%= app.users_count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
