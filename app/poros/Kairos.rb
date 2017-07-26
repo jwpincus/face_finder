@@ -6,7 +6,7 @@ class Kairos
       user = User.find(response['images'].first['transaction']['subject_id'])
       authorized = user_authorized(app, user)
       if authorized
-        Authentication.create(app: app, user: user)
+        Authentication.create(app: app, user: user, image: image)
         { authenticated: authorized, user: {
           name: user.first_name, email: user.email
         }}
