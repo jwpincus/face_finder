@@ -9,6 +9,7 @@
         <thead>
           <th>App Name</th>
           <th>Registered Users</th>
+        </thead>
           <tbody>
             <% current_user.authorizations.each do |app| %>
               <tr>
@@ -17,7 +18,6 @@
               </tr>
             <% end %>
           </tbody>
-        </thead>
       </table>
     </div>
   </div>

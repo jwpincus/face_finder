@@ -9,6 +9,7 @@
           <th>App Name</th>
           <th>Date</th>
           <th>Image</th>
+        </thead>
           <tbody>
             <% @authentications.each do |authentication| %>
               <tr>
@@ -19,7 +20,7 @@
               </tr>
             <% end %>
           </tbody>
-        </thead>
+          <%= will_paginate @authentications %>
       </table>
     </div>
   </div>

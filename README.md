@@ -16,3 +16,4 @@ This fork is exploring using facial data to authenticate IOT device users that a
 ## More Info
 Read the write-up [here](https://medium.com/@Jwpincus/i-made-a-thing-facial-recognition-e694bc1ac8c8)
 
+## API
