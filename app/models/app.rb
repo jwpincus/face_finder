@@ -5,7 +5,7 @@ class App < ApplicationRecord
   has_many :authorized_users, through: :app_users, source: :user
   has_many :authentications, dependent: :destroy
   before_save :decimalize_confidence
-  before_save :add_hex_key
+  before_create :add_hex_key
 
   def users_count
     authorized_users.count
