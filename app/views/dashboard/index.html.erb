@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <div class="panel panel-primary">
+
+        <div class="panel-heading">
+          Facial Recognition based login and authorization dashboard
+        </div>
+        <div class="panel-body">
+          <p><b>From here you can:</b></p>
+          <ul>
+            <li> Manage your Apps and Devices authenticating through our service</li>
+            <li>See which apps and devices you are authorized on</li>
+            <li>See a log of details about your succesful authentications</li>
+            <li>Are you having issues not being recognized? Creating additional enrollments can improve the accuracy of the facial recognition. <%= link_to 'Add additional enrollments here', enroll_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render partial: 'layouts/app_index_table.html.erb' %>
+  <%= render partial: 'layouts/authentications_table.html.erb' %>
+  <%= render partial: 'layouts/authorized_apps_table.html.erb' %>
+
+</div>
