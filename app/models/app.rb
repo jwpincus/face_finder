@@ -3,7 +3,7 @@ class App < ApplicationRecord
   has_many :owners, through: :app_owners, source: :user
   has_many :app_users, dependent: :destroy
   has_many :authorized_users, through: :app_users, source: :user
-  has_many :authentications
+  has_many :authentications, dependent: :destroy
   before_save :decimalize_confidence
   before_save :add_hex_key
 
