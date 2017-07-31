@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-10">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Docs: How to use the API with your app or device</h2>
+      </div>
+      <div class="panel-body">
+        <div class="">
+          <h4>How it works</h4>
+          <p>When you register an app or device you are creating a way for this website to recognize your particular app, and which specific users are allowed to authenticate through it.</p><br>
+          <p>The <b>confidence</b> setting determines how strict the facial recognition alogrithm will be when determining a match. A default value of 70 is our preference.</p><br>
+          <p>The <b>Name</b> of your app/device will be displayed on your dashboard, and will be shown to users when they authenticate through your app/device</p>
+          <p>To <b>authorize users</b> you will need the email address that they registered on this site with. Once your app has been created you can go to the <b>Manage authorized users and settings page</b> link on the dashboard. Once on the management page, type the user's email address into the <b>User Email</b> field and click on add user. </p>
+          <p>Users will now be able to be recognized by your app or device. To remove a user from your app/device simpy click <b>Remove User Authentication</b> link next to their photo.</p>
+          <p>Users must be specifically added by your app to be identified by the API. A user that is registered on this site, but not on your app, WILL NOT return a succesful authentication and identification through the API.</p>
+
+        </div>
+        <hr>
+        <div class="">
+          <h4>Authentication endpoint URL</h4>
+          <p><b>'<%= request.base_url %>/api/v1/authenticate'</b></p>
+        </div>
+        <hr>
+        <div class="">
+          <h4>Requests to the API</h4>
+          <p>In the header include: <b>'Content-Type: application/json
+            '</b></p>
+          <p>The body should be sent as a JSON payload in the following format: </p>
+            <p><code>{'app_key': [app key generated after creating new app], 'image': [image as base64 jpeg string OR url for hosted image]}</code></p>
+
+            <% if !@app.app_key.blank? %>
+              <p><b>The key for this app is: <%= @app.app_key %></b> </p>
+            <% else %>
+              <p><b>The key for this app will be generated after submitting.</b> It will be visible on the dashboard or on the management page for the app</p>
+            <% end %>
+        </div>
+        <hr>
+        <div class="">
+          <h4>Responses from the API</h4>
+          <p><b>The API will respond with one of two responses</b></p>
+          <p><b>For a SUCCESSFULL identification and authentication the response will be in JSON format in the body:</b></p>
+          <p><code>{
+              "authenticated": true,
+              "user": {
+                  "name": "[user's first name]",
+                  "email": "[user's email]"
+              }
+          }</code></p><br>
+          <p><b>For an UNSUCCESSFULL identification and authentication the response will be in JSON format in the body:</b></p>
+          <p><code>{
+              "authenticated": false,
+              "error": "Unable to find a face that matched an authorized user"
+          }</code></p><br>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

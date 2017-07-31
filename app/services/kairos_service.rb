@@ -44,7 +44,8 @@ class KairosService
       req.headers['app_id'] = ENV['kairos_app_id']
       req.headers['app_key'] = ENV['kairos_key']
       req.body = "{ \"image\": \"#{image}\",
-        \"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
+        \"gallery_name\": \" #{ENV['kairos_gallery']} \",
+        \"threshold\": \" #{threshold} \"}"
     end
     if !JSON.parse(response.body)['Errors'] && !(JSON.parse(response.body)['images'].first['transaction']['status'] == 'failure')
       JSON.parse(response.body)
