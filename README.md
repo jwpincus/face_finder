@@ -3,6 +3,8 @@
 This project is a fork of the basic facial recognition system I designed [here](https://github.com/jwpincus/facial-login-standalone)
 
 This fork is exploring using facial data to authenticate IOT device users that are registered with the site.
+
+There is a live instance of this running [here](https://re-cognizer.herokuapp.com/)
 ## Setup
 + this is a rails app. You will need ruby and rails installed on your machine.
 + This app uses a postgres database. You will need to have a PG server running, or be able to configure a connection to one.
