@@ -15,8 +15,8 @@ There is a live instance of this running [here](https://re-cognizer.herokuapp.co
 + set the environment variables for kairos_app_id, kairos_key (get from free Kairos account), kairos_gallery (users choice, make sure to use a different name for production or else there will be user_id conflicts) and confidence (this variable determines the minimum threshold for a login rejection. set a number between 0.0 and 1.0. The higher the number, the more strict the rejection criteria. Recommend starting at 0.7)
 ++ `rails s` will start the server
 
-## More Info
-Read the write-ups [here](https://medium.com/@Jwpincus/i-made-a-thing-facial-recognition-e694bc1ac8c8) and [here](https://medium.com/@Jwpincus/i-made-a-thing-c9635139db32)
+## More Info, Demos, and a comprehensive write up.
+Read the write-up for sprint one [here](https://medium.com/@Jwpincus/i-made-a-thing-facial-recognition-e694bc1ac8c8) and sprint two [here](https://medium.com/@Jwpincus/i-made-a-thing-c9635139db32)
 
 ## API
 endpoint:
