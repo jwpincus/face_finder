@@ -11,8 +11,8 @@ class App < ApplicationRecord
     authorized_users.count
   end
 
-
   private
+
   def decimalize_confidence
     self.min_confidence = self.min_confidence / 100.0
   end
@@ -22,4 +22,5 @@ class App < ApplicationRecord
       self.app_key = SecureRandom.hex(10)
     end while self.class.exists?(:app_key => app_key)
   end
+  
 end

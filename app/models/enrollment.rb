@@ -4,4 +4,5 @@ class Enrollment < ApplicationRecord
   def enroll
     KairosService.enroll(self)
   end
+  
 end
