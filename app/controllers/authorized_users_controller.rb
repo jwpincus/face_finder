@@ -1,5 +1,5 @@
 class AuthorizedUsersController < ApplicationController
-  before_action :user_owns_app
+  before_action { app_owner?(params[:app_id]) }
   def create
     app = App.find(params[:app_id])
     if User.exists?(email: params[:add_user_email])
@@ -15,15 +15,6 @@ class AuthorizedUsersController < ApplicationController
     app = App.find(params[:app_id])
     app.authorized_users.delete(User.find(params[:user_id]))
     redirect_to app_path(app)
-  end
-
-  private
-
-  def user_owns_app
-    if !App.find(params[:app_id]).owners.include?(current_user)
-      flash[:danger] = ['You are not authorized to manage this App']
-      redirect_to dashboard_index_path
-    end
   end
 
 end

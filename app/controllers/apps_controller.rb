@@ -1,5 +1,6 @@
 class AppsController < ApplicationController
-  before_action :app_owner?, only: [:destroy, :update, :show]
+  before_action(only: [:destroy, :update, :show])  { app_owner?(params[:id]) }
+
   def new
     @app = App.new
   end
@@ -36,16 +37,11 @@ class AppsController < ApplicationController
     flash[:success] = ['App successfully deleted']
     redirect_to dashboard_index_path
   end
+  
   private
-
-  def app_owner?
-    if !App.find(params[:id]).owners.include?(current_user)
-      flash[:danger] = ['This resource is not available']
-      redirect_to dashboard_index_path
-    end
-  end
 
   def app_params
     params.require(:app).permit(:name, :min_confidence)
   end
+
 end

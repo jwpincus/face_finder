@@ -16,7 +16,6 @@ class Kairos
     else
       no_match
     end
-
   end
 
   private
@@ -28,4 +27,5 @@ class Kairos
   def self.user_authorized(app, user)
     app.authorized_users.include?(user) ? true : false
   end
+
 end

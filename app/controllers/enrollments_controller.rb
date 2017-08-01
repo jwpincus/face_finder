@@ -24,4 +24,5 @@ class EnrollmentsController < ApplicationController
   def enroll_params
     params.permit(:image)
   end
+
 end

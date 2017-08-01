@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   def current_user
@@ -15,6 +13,13 @@ class ApplicationController < ActionController::Base
   def enrolled?
     if current_user && !current_user.enrolled?
       redirect_to enroll_path
+    end
+  end
+
+  def app_owner?(id)
+    if !App.find(id).owners.include?(current_user)
+      flash[:danger] = ['This resource is not available']
+      redirect_to dashboard_index_path
     end
   end
 

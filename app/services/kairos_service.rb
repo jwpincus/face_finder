@@ -30,8 +30,8 @@ class KairosService
        \"subject_id\": \"#{user_id}\",
         \"gallery_name\": \" #{ENV['kairos_gallery']} \"}"
     end
-    if !JSON.parse(response.body)['Errors']
-      true if  JSON.parse(response.body)['images'][0]['transaction']['confidence'] > ENV['confidence'].to_f
+    if !JSON.parse(response.body)['Errors'] && JSON.parse(response.body)['images'][0]['transaction']['confidence'] > ENV['confidence'].to_f
+      true
     else
       false
     end
